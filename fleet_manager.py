@@ -16,8 +16,24 @@ def display_menu(student_name):
     choice = input ("Select an option: ")
     return choice
 
+def add_member(names, ranks,divs, ids):
+    print("\n___ Register New Member___")
+    new_id = input("Enter ID number:")
+    if new_id in ids:
+        print("Error: This ID already exists!")
+    else:
+        new_name = input("Enter Name: ")
+        new_rank = input("Enter Rank: ")
+        new_div = input("Enter Division: ")
+        names.append(new_name)
+        ranks.append(new_rank)
+        divs. append(new_div)
+        ids. append(new_id)
+        print(f"Success! {new_name} has been added.")
+
+
 def main():
-    
+
     names, ranks, divs, ids = start_database()
     my_name = "Peter"
 
@@ -27,7 +43,7 @@ def main():
         if user_choice == "1":
             print("\nViewing Crew Roster...(Function coming next)")
         elif user_choice == "2" :
-            print("\nAdding New Member...(Function coming next)")
+            add_member(names, ranks, divs, ids)
         elif user_choice =="3" :
             print("Exiting program.")
             active = False
