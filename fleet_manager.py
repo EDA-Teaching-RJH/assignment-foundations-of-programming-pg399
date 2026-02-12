@@ -15,9 +15,14 @@ def display_menu(student_name):
 
     choice = input ("Select an option: ")
     return choice
+def display_roster(names, ranks,divs, ids):
+    print("\n--- Current Fleet Roster ---")
+    for i in range(len(names)):
+        print(f"ID: {ids[i]} | Name: {names[i]} | Rank: {ranks[i]} | Div: {divs[i]}")
+    print("-----------------------------")
 
-def add_member(names, ranks,divs, ids):
-    print("\n___ Register New Member___")
+def add_member(names, ranks, divs, ids):
+    print("\n_ _ Register New Member_ _")
     new_id = input("Enter ID number:")
     if new_id in ids:
         print("Error: This ID already exists!")
@@ -41,7 +46,7 @@ def main():
     while active:
         user_choice = display_menu(my_name)
         if user_choice == "1":
-            print("\nViewing Crew Roster...(Function coming next)")
+            display_roster(names, ranks, divs, ids)
         elif user_choice == "2" :
             add_member(names, ranks, divs, ids)
         elif user_choice =="3" :
