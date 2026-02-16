@@ -12,11 +12,10 @@ def display_menu(student_name):
     print("1. View Crew Roster")
     print("2. Add Crew Member")
     print("3. Remove Crew Member" )
-    print("4. Exit")
+    print("4.Update Crew Rank")
+    print("5. Exit")
     return input ("Enter your choice :")
 
-    choice = input ("Select an option: ")
-    return choice
 def display_roster(names, ranks,divs, ids):
     print("\n--- Current Fleet Roster ---")
     for i in range(len(names)):
@@ -47,6 +46,16 @@ def remove_member(names, ranks, divds, ids):
     del names[idx], ranks[idx], divds[idx], ids[idx]
     print("Crew member removed successfully!")
 
+def update_rank(names, ranks, divs, ids):
+    target_id = input("Enter ID of member to update rank: ")
+    if target_id not in ids:
+        print("Error: ID not found in records. ")
+        return
+    idx = ids. index(target_id)
+    new_rank = input(f"Enter new rank for {names[idx]}: ")
+    ranks[idx] = new_rank
+    print(f"Success! {names[idx]}'s rank updated to {new_rank}.")
+
 
 
 def main():
@@ -64,6 +73,7 @@ def main():
         elif user_choice =="3" :
             print("Exiting program.")
         elif user_choice == "4" :
+            update_rank(names, ranks, divs, ids)
             print("Existing program.")
             active = False
         else:
