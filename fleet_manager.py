@@ -13,7 +13,8 @@ def display_menu(student_name):
     print("2. Add Crew Member")
     print("3. Remove Crew Member" )
     print("4.Update Crew Rank")
-    print("5. Exit")
+    print("5. Search Crew Member")
+    print("6. Exit")
     return input ("Enter your choice :")
 
 def display_roster(names, ranks,divs, ids):
@@ -56,6 +57,24 @@ def update_rank(names, ranks, divs, ids):
     ranks[idx] = new_rank
     print(f"Success! {names[idx]}'s rank updated to {new_rank}.")
 
+    def search_member (names, ranks, divs, ids):
+        search_term  = input("Enter ID or name to search for a crew member : "). strip()
+        found = False
+        print("\n--- Search Results --- ")
+        for i in range (len(ids)):
+            if search_term == ids[i] or search_term.lower() in names[i].lower():
+                print(f"ID: {ids[i]}")
+                print(f"Name: {names[i]}")
+                print(f"Rank: {ranks[i]}")
+                print(f"Division: {divs[i]}")
+                print("-----------------")
+                found = True
+        if not found:
+            print("No crew members match your search.")
+
+
+ 
+
 
 
 def main():
@@ -71,10 +90,13 @@ def main():
         elif user_choice == "2" :
             add_member(names, ranks, divs, ids)
         elif user_choice =="3" :
-            print("Exiting program.")
+            remove_member(names, ranks, divs, ids)
         elif user_choice == "4" :
             update_rank(names, ranks, divs, ids)
-            print("Existing program.")
+        elif user_choice == "5" :
+            search_member(names, ranks, divs, ids)
+        elif user_choice == "6":
+            print("Exiting program.")
             active = False
         else:
             print("Invalid input, please try again.")
