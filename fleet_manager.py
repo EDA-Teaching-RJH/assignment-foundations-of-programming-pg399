@@ -14,7 +14,8 @@ def display_menu(student_name):
     print("3. Remove Crew Member" )
     print("4.Update Crew Rank")
     print("5. Search Crew Member")
-    print("6. Exit")
+    print("Filter by Division")
+    print("7. Exit")
     return input ("Enter your choice :")
 
 def display_roster(names, ranks,divs, ids):
@@ -72,6 +73,22 @@ def update_rank(names, ranks, divs, ids):
         if not found:
             print("No crew members match your search.")
 
+    def filter_by_division(names, ranks, divs, ids):
+        target_div = input("Enter division to filter by: "). strip(). lower()
+        found = False
+        print(f"\'\n---Crew Members in  {target_div.title()} division ---")
+        for i in range (len(divs)):
+            if divs[i].lower() == target_div:
+            print(f"ID: {ids[i]}")
+            print(f"Name: {names[i]}")
+            print(f"Rank: {ranks[i]}")
+            print("----------------")
+            found = True
+        if not found:
+            print(f"No crew found in {target_div.title()} division.")
+
+
+
 
  
 
@@ -95,7 +112,8 @@ def main():
             update_rank(names, ranks, divs, ids)
         elif user_choice == "5" :
             search_member(names, ranks, divs, ids)
-        elif user_choice == "6":
+        elif user_choice == "6" :
+            filter_by_division(names, ranks, divs, ids)
             print("Exiting program.")
             active = False
         else:
