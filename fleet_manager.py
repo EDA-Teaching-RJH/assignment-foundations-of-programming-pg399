@@ -10,8 +10,10 @@ def start_database() :
 def display_menu(student_name):
     print(f"\n--- Fleet Manager: {student_name} ---")
     print("1. View Crew Roster")
-    print("2. Add Member")
-    print("3. Exit")
+    print("2. Add Crew Member")
+    print("3. Remove Crew Member" )
+    print("4. Exit")
+    return input ("Enter your choice :")
 
     choice = input ("Select an option: ")
     return choice
@@ -36,6 +38,16 @@ def add_member(names, ranks, divs, ids):
         ids. append(new_id)
         print(f"Success! {new_name} has been added.")
 
+def remove_member(names, ranks, divds, ids):
+    target_id = input("Enter ID of member to remove: ")
+    if target_id not in ids:
+        print("Error: ID not found in records. ")
+        return
+    idx = ids.index(target_id)
+    del names[idx], ranks[idx], divds[idx], ids[idx]
+    print("Crew member removed successfully!")
+
+
 
 def main():
 
@@ -51,6 +63,8 @@ def main():
             add_member(names, ranks, divs, ids)
         elif user_choice =="3" :
             print("Exiting program.")
+        elif user_choice == "4" :
+            print("Existing program.")
             active = False
         else:
             print("Invalid input, please try again.")
